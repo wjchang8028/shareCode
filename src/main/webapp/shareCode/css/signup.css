@@ -1,0 +1,109 @@
+/*main color: #6667AB; */
+.inner_cont {
+	width: 800px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 150px;
+	margin: 0 auto;
+	margin-top: auto;
+	width: 800px;
+}
+
+.swrite {
+	width: 60%;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 0.2rem;
+	padding: 1em 1em;
+	font-size: 15px;
+}
+
+.validCheck{
+	width: 60%;
+	padding-left:60px;
+	padding: 0.5em 7em;
+	font-size: 15px;
+	color:red;
+}
+
+.mail_input {
+	width: 60%;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 0.2rem;
+	padding: 1em 1em;
+	font-size: 15px;
+}
+
+.btn-css {
+	background-color: #6667AB;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 10px 22px;
+	border-radius: 0.2rem;
+	border: 0;
+	width: 105px;
+}
+
+.signup_main {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 250px;
+	padding-right: 20px;
+	font-size: 17px;
+	text-align: right;
+}
+
+.btn-css2 {
+	background-color: #6667AB;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 10px 22px;
+	border-radius: 0.2rem;
+	border: 0;
+	width: 105px;
+}
+
+.mail_check_input {
+	/* 	width: 50%;
+	height: 100%;
+	border: none;
+	font-size: 28px; */
+	width: 60%;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 0.2rem;
+	padding: 1em 1em;
+	font-size: 15px;
+}
+
+.mail_check_button {
+	background-color: #6667AB;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 10px 22px;
+	border-radius: 0.2rem;
+	border: 0;
+	width: 105px;
+}
+.form-submit{
+	padding: 70px 0px 0px 0px;
+}
+
+#mail_check_input_box_false {
+	background-color: gery;
+	width: 60%;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 0.2rem;
+	padding: 1em 1em;
+	font-size: 15px;
+}
+
+#mail_check_input_box_true {
+	background-color: white;
+}
+
+.correct {
+	color: green;
+}
+
+.incorrect {
+	color: red;
+}

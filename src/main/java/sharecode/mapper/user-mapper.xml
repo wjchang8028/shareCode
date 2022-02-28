@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shareCode">
+
+
+	<!-- 회원가입 -->
+	<insert id="signUpUser" parameterType="sharecode.vo.UserVO">
+		<selectKey keyProperty="user_no" resultType="int" order="BEFORE">
+			SELECT USER_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO USERINFO
+		(USER_NO,USER_ID,USER_PW,USER_MAIL,USER_DATE)
+		VALUES(#{user_no},#{user_id},#{user_pw},#{user_mail},SYSDATE)
+	</insert>
+
+
+	<!-- 아이디 중복체크 -->
+	<select id="idCheck" parameterType="java.lang.String"
+		resultType="Integer">
+		SELECT COUNT(*) FROM USERINFO WHERE USER_ID=#{value}
+	</select>
+
+
+</mapper>

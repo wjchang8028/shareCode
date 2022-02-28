@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shareCode">
+
+
+	<!-- 회원가입 -->
+	<insert id="insertKakao" parameterType="sharecode.vo.UserVO">
+		<selectKey keyProperty="user_no" resultType="int" order="BEFORE">
+			SELECT USER_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO USERINFO
+		(USER_NO,USER_ID,USER_PW,USER_MAIL,USER_DATE)
+		VALUES(#{user_no},#{user_id},#{user_pw},#{user_mail},SYSDATE)
+	</insert>
+
+
+	<select id="chKakao" parameterType="java.lang.String"
+		resultType="String">
+		SELECT USER_NO, USER_ID FROM USERINFO WHERE USER_ID=#{value}
+	</select>
+
+
+</mapper>

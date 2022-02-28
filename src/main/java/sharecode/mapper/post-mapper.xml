@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post">
+
+	<insert id="insertPost" parameterType="sharecode.vo.PostVO">
+		<selectKey keyProperty="post_no" resultType="int"
+			order="BEFORE">
+			SELECT POST_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO POST
+		(POST_NO, USER_NO, POST_TITLE, POST_CONTENT,
+		POST_CATEGORY, POST_HIT,
+		POST_DATE)
+		VALUES(#{post_no}, #{user_no},
+		#{post_title},
+		#{post_content}, #{post_category},0,SYSDATE)
+	</insert>
+
+	<select id="selectPostInfo" parameterType="java.lang.Integer"
+		resultType="sharecode.vo.PostVO">
+		SELECT POST_NO, P.USER_NO, USER_ID, POST_TITLE,
+		POST_CONTENT, POST_CATEGORY, POST_HIT, POST_DATE
+		FROM POST P, USERINFO
+		U
+		WHERE P.USER_NO=U.USER_NO
+		AND POST_NO=#{post_no}
+	</select>
+
+	<update id="updatePostHit" parameterType="java.lang.Integer">
+		UPDATE POST SET
+		POST_HIT=POST_HIT+1
+		WHERE POST_NO=#{post_no}
+	</update>
+
+	<update id="updatePostInfo" parameterType="sharecode.vo.PostVO">
+		UPDATE POST SET
+		POST_TITLE=#{post_title},POST_CONTENT=#{post_content},POST_CATEGORY=#{post_category}
+		WHERE POST_NO=#{post_no}
+	</update>
+
+	<select id="selectLangAllCategory" parameterType="HashMap"
+		resultType="sharecode.vo.PostVO"> <!--카테고리찾기 -->
+		SELECT * FROM
+		(SELECT p.POST_NO,p.USER_NO,p.POST_TITLE,p.POST_CONTENT,p.POST_CATEGORY,p.POST_HIT,p.POST_DATE,i.USER_ID,
+        ROW_NUMBER() OVER(ORDER BY p.POST_NO DESC) AS RNUM
+		FROM POST p , USERINFO i
+		WHERE p.USER_NO = i.USER_NO
+		)
+		WHERE RNUM
+		BETWEEN ${start} AND ${end}
+	</select>
+
+	<select id="countList" parameterType="String" resultType="int"> <!-- 카테고리별 리스트 수 -->
+		SELECT COUNT(*) FROM POST
+		<if test="_parameter != 'all'">
+   		WHERE POST_CATEGORY = #{value}
+		</if>
+	</select>
+
+	<select id="selectLangCategory" parameterType="HashMap"
+		resultType="sharecode.vo.PostVO"> <!--카테고리찾기 -->
+		SELECT * FROM
+		(SELECT p.POST_NO,p.USER_NO,p.POST_TITLE,p.POST_CONTENT,p.POST_CATEGORY,p.POST_HIT,p.POST_DATE,i.USER_ID,
+        ROW_NUMBER() OVER(ORDER BY p.POST_NO DESC) AS RNUM
+		FROM POST p , USERINFO i
+		<if test='!#{value}.equals("all")'>
+			WHERE p.USER_NO = i.USER_NO and
+			p.POST_CATEGORY=#{category})
+		</if>
+		WHERE RNUM BETWEEN ${start} AND ${end}
+
+	</select>
+
+
+	<!-- 총 게시글 갯수 출력 -->
+	<select id="countPost" resultType="int">
+		SELECT COUNT(*) FROM POST
+	</select>
+
+	<delete id="deletePost" parameterType="java.lang.Integer">
+		DELETE FROM POST
+		WHERE
+		POST_NO=#{post_no}
+	</delete>
+
+</mapper>

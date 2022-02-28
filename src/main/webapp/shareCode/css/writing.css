@@ -1,0 +1,118 @@
+.main-content{
+	padding-top: 150px;
+	text-align: center;
+	
+}
+.write-content{
+	width: 1000px;
+    padding: 55px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 5px 1px rgb(0 0 0 / 10%);
+    text-align: center;
+    margin: 0 auto;
+}
+.write-title{
+    text-align: center;
+	margin-bottom: 40px;
+	color: #6667AB;
+	border-bottom: 2px solid rgba(0, 0, 0, .2);
+}
+
+select {
+	width: 200px;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 0.2rem;
+	padding: 1em 1em;
+	background: url('../img/arrow.jpeg') no-repeat 95% 50%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	 background-color: white;
+}
+select::-ms-expand {
+	display: none;
+}
+
+.write {
+	width: 80%;
+	border: 1px solid rgba(0,0,0,.2);
+	border-radius: 0.2rem;
+	padding: 1em 1em;
+	font-size: 15px;
+}
+textarea{
+	width:500px; 
+	height:500px; 
+    resize:none;
+}
+.form-row{
+	text-align:left;
+	padding-bottom:20px;
+}
+
+form {
+  width: 90%;
+  margin: 0 auto;
+}
+.title{
+	display: inline-block;
+    box-sizing: border-box;
+    width: 100px;
+    padding-right: 20px;
+    font-size: 17px;
+}
+
+.writing{
+    text-align: right;
+}
+
+.title-content{
+	padding-top: 10px;
+    vertical-align: top;
+}
+
+
+/* button */
+
+.btn-div{
+	padding-right:20px;
+	padding-top: 20px;
+	text-align: right;
+	background: #ffffff;
+}
+
+.write-btn{
+    background-color: #6667AB;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px 22px;
+    border-radius: 0.2rem;
+    border: 0;
+	width:100px;
+}
+
+/* post */
+
+.post-title{
+	text-align:left;
+	margin-bottom: 40px;
+}
+
+.title-border{
+	margin-top:50px;
+	border-bottom: 2px solid rgba(0, 0, 0, .2);
+	
+}
+.section{
+	width:50%;
+	float:left;
+	text-align:left;
+	padding-bottom:20px;
+}
+.post-content{
+	margin: 50px 20px;
+	font-size: 18px;
+}
+.post-btn{
+	float:right;
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comments">
+	
+	<select id="getComSequence" resultType="java.lang.Integer">
+		SELECT COMMENTS_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	<select id="selectCommentsList" parameterType="java.lang.Integer" resultType="sharecode.vo.CommentsVO">
+		SELECT COM_NO, POST_NO, C.USER_NO, USER_ID, COM_CONTENT, COM_PNUM, COM_JOB, COM_DATE, COM_DEL
+		FROM COMMENTS C, USERINFO U
+		WHERE C.USER_NO = U.USER_NO
+		AND POST_NO=#{post_no}
+		ORDER BY COM_PNUM ASC, COM_NO ASC
+	</select>
+	
+	<insert id="insertCommentsInfo" parameterType="sharecode.vo.CommentsVO">
+		INSERT INTO COMMENTS
+		VALUES(#{com_no},#{post_no},#{user_no},#{com_content},#{com_pnum},#{com_job},SYSDATE,0)
+	</insert>
+	
+	<update id="deleteComments" parameterType="java.lang.Integer">
+		UPDATE COMMENTS SET COM_CONTENT='삭제된 댓글입니다.',COM_DEL=1
+		WHERE COM_NO=#{com_no}
+	</update>
+	
+	<update id="updateComments" parameterType="sharecode.vo.CommentsVO">
+		UPDATE COMMENTS SET COM_CONTENT=#{com_content}
+		WHERE COM_NO=#{com_no}
+	</update>
+	
+	<delete id="deletePostComments" parameterType="java.lang.Integer">
+		DELETE FROM COMMENTS
+		WHERE
+		POST_NO=#{post_no}
+	</delete>
+</mapper>

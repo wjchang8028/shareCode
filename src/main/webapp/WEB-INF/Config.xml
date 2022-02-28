@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration><!-- DB설정(Connection) -->
+	<typeAliases>
+	</typeAliases> 
+	
+	<mappers>
+		<mapper resource="sharecode/mapper/user-mapper.xml"/>
+		<mapper resource="sharecode/mapper/post-mapper.xml"/>
+		<mapper resource="sharecode/mapper/login-mapper.xml"/>
+		<mapper resource="sharecode/mapper/comments-mapper.xml"/>
+		<mapper resource="sharecode/mapper/board-mapper.xml"/>
+		<mapper resource="sharecode/mapper/kakao-mapper.xml"/>
+	</mappers> 
+	
+	
+</configuration>
