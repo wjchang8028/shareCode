@@ -105,7 +105,7 @@
 			}
 
 		});
-
+		// SMTP 기능 추가
 		/* 인증번호 비교 */
 		$(".mail_check_input").blur(function() {
 			var inputCode = $(".mail_check_input").val(); // 입력코드    
